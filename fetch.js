@@ -1,8 +1,17 @@
 import fetch from "node-fetch"
+import { Agent } from "https"
 
-export default async (N = 1000, port = 3000) => {
+export default async (N = 1000, port = 3000, protocol = "http") => {
+  const fetchOptions = {}
+
+  if (protocol === "https") {
+    fetchOptions.agent = new Agent({
+      rejectUnauthorized: false,
+    })
+  }
+
   const responses = new Array(N).fill(null).map(async () => {
-    const res = await fetch(`http://localhost:${port}`)
+    const res = await fetch(`${protocol}://localhost:${port}`, fetchOptions)
     return await res.text()
   })
 
