@@ -8,6 +8,15 @@ const port = process.argv[2] || defaultPort
 const server = createServer((req, res) => {
   res.writeHead(200, { "Content-type": "text/plain" })
   res.end("1")
-}).listen(port)
+})
 
-console.info("Started HTTP server on port", port)
+// Using exclusive: false allows port to be shared and reused
+server.listen(
+  port,
+  {
+    exclusive: false,
+  },
+  () => {
+    console.info("Started HTTP server on port", port)
+  }
+)

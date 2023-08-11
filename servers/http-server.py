@@ -1,6 +1,7 @@
 import http.server
 import socketserver
 import sys
+import socket
 
 defaultPort = 3000
 
@@ -20,6 +21,15 @@ class MyHttpRequestHandler(http.server.SimpleHTTPRequestHandler):
 
 Handler = MyHttpRequestHandler
 
-with socketserver.TCPServer(("", port), Handler) as httpd:
-    print(f"Started HTTP server on port {port}")
-    httpd.serve_forever()
+# Create a TCPServer instance without binding or activating
+httpd = socketserver.TCPServer(("", port), Handler, bind_and_activate=False)
+
+# Set the socket option to reuse the address
+httpd.socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+
+# Now bind and activate the server
+httpd.server_bind()
+httpd.server_activate()
+
+print(f"Started HTTP server on port {port}")
+httpd.serve_forever()
