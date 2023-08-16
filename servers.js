@@ -1,0 +1,51 @@
+export default [
+  // {
+  //   type: "python",
+  //   command: "python",
+  //   args: ["./servers/http-server.py"],
+  //   name: "Python HTTP Server",
+  //   protocol: "http",
+  // },
+  // {
+  //   type: "python",
+  //   command: "python",
+  //   args: ["./servers/https-server.py"],
+  //   name: "Python HTTPS Server",
+  //   protocol: "https",
+  // },
+  {
+    type: "python",
+    command: "python",
+    args: ["./servers/http-async.py"],
+    name: "Python HTTP Async Server",
+    protocol: "http",
+  },
+  {
+    type: "python",
+    command: "python",
+    args: ["./servers/https-async.py"],
+    name: "Python HTTPS Async Server",
+    protocol: "https",
+  },
+  {
+    type: "python",
+    command: "python",
+    args: ["./servers/http-async-uvloop.py"],
+    name: "Python HTTP Async (uvloop) Server",
+    protocol: "http",
+  },
+  {
+    type: "node",
+    command: "node",
+    args: ["./servers/http-server.js"],
+    name: "Node HTTP Server",
+    protocol: "http",
+  },
+  {
+    type: "node",
+    command: "node",
+    args: ["./servers/https-server.js"],
+    name: "Node HTTPS Server",
+    protocol: "https",
+  },
+]

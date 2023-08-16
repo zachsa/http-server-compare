@@ -3,7 +3,7 @@ import ssl
 import sys
 import socket
 
-defaultPort = 3000
+defaultPort = 4000
 
 # Get the port from the command line arguments
 port = int(sys.argv[1]) if len(sys.argv) > 1 else defaultPort
@@ -30,5 +30,4 @@ context.load_cert_chain(certfile='./cert.pem', keyfile='./key.pem')
 
 httpd = MyHTTPSServer(('', port), MySimpleHTTPRequestHandler)
 httpd.socket = context.wrap_socket(httpd.socket, server_side=True)
-print(f"Started HTTPS server on port {port}")
 httpd.serve_forever()

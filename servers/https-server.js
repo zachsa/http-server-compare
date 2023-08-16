@@ -19,12 +19,6 @@ const server = createServer(
 )
 
 // Using exclusive: false allows port to be shared and reused
-server.listen(
-  port,
-  {
-    exclusive: false,
-  },
-  () => {
-    console.info("Started HTTPS server on port", port)
-  }
-)
+server.listen(port, {
+  exclusive: false,
+})

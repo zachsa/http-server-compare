@@ -30,6 +30,4 @@ httpd.socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 # Now bind and activate the server
 httpd.server_bind()
 httpd.server_activate()
-
-print(f"Started HTTP server on port {port}")
 httpd.serve_forever()

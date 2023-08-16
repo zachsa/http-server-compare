@@ -11,12 +11,6 @@ const server = createServer((req, res) => {
 })
 
 // Using exclusive: false allows port to be shared and reused
-server.listen(
-  port,
-  {
-    exclusive: false,
-  },
-  () => {
-    console.info("Started HTTP server on port", port)
-  }
-)
+server.listen(port, {
+  exclusive: false,
+})
