@@ -2,6 +2,13 @@ import http.server
 import ssl
 import sys
 import socket
+import signal
+
+def shutdown(*args):
+    raise SystemExit
+
+signal.signal(signal.SIGTERM, shutdown)
+signal.signal(signal.SIGINT, shutdown)
 
 defaultPort = 4000
 

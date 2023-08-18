@@ -2,7 +2,7 @@ import { spawn } from "child_process"
 
 export default (command, args, name) => {
   const child = spawn(command, args, {
-    detached: true, // Detach the child process
+    detached: false, // Don't detach the child process
   })
 
   child.stdout.on("data", data => {
@@ -16,8 +16,6 @@ export default (command, args, name) => {
   child.on("close", code => {
     console.info(`${name} process exited with code ${code}`)
   })
-
-  child.unref() // Unreference the child process
 
   return child
 }
