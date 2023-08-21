@@ -7,6 +7,7 @@ export default async (N = 1000, port = 3000, protocol = "http") => {
   if (protocol === "https") {
     fetchOptions.agent = new Agent({
       rejectUnauthorized: false,
+      keepAlive: true,
     })
   }
 
