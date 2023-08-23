@@ -1,0 +1,8 @@
+remote_theme: pages-themes/cayman@v0.2.0
+plugins:
+  - jekyll-remote-theme
+
+title: HTTP Server Tests
+description: Testing various HTTP(S) servers ability to handle simple, concurrent requests
+
+show_downloads: true

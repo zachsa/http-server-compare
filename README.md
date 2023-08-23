@@ -11,5 +11,5 @@
 # Setup
 ```sh
 # Install Node.js via NVM
-# Insta
+# Install
 ```
