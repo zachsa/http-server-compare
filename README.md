@@ -17,6 +17,12 @@
 ```sh
 # Install Node.js via NVM
 # Install
+
+# Install Jekyll
+sudo apt update \
+  && sudo apt install rbenv
+
+rbenv install -l
 ```
 
 {% include charts.html %}

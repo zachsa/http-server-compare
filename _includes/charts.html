@@ -4,29 +4,31 @@
     height: 400px;
   }
 </style>
-<script type="module" async>
-  import * as echarts from 'https://jspm.dev/echarts'
+<script>
+  import('https://jspm.dev/echarts').then(f => {
+    console.log(f)
+  })
 
-  var chartDom = document.getElementById("chart")
-  var myChart = echarts.init(chartDom)
-  var option
+  // var chartDom = document.getElementById("chart")
+  // var myChart = echarts.init(chartDom)
+  // var option
 
-  option = {
-    xAxis: {
-      type: "category",
-      data: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
-    },
-    yAxis: {
-      type: "value",
-    },
-    series: [
-      {
-        data: [150, 230, 224, 218, 135, 147, 260],
-        type: "line",
-      },
-    ],
-  }
+  // option = {
+  //   xAxis: {
+  //     type: "category",
+  //     data: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+  //   },
+  //   yAxis: {
+  //     type: "value",
+  //   },
+  //   series: [
+  //     {
+  //       data: [150, 230, 224, 218, 135, 147, 260],
+  //       type: "line",
+  //     },
+  //   ],
+  // }
 
-  option && myChart.setOption(option)
+  // option && myChart.setOption(option)
 </script>
 <div id="chart"></div>
