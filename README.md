@@ -8,6 +8,11 @@
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
+# Concepts
+## Managing sub-processes
+
+## Short-lived HTTP server gotchas
+
 # Setup
 ```sh
 # Install Node.js via NVM
