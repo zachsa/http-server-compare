@@ -71,7 +71,7 @@
     }
   }
 
-  fetch("/assets/data.json").then(async res => {
+  fetch("/http-server-compare/assets/data.json").then(async res => {
     const rawData = await res.json()
     var data = splitData(rawData)
     myChart.setOption(
