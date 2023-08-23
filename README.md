@@ -20,9 +20,24 @@
 
 # Install Jekyll
 sudo apt update \
-  && sudo apt install rbenv
+  && sudo apt install \
+    rbenv \
+    git \
+    curl \
+    libssl-dev \
+    libreadline-dev \
+    zlib1g-dev \
+    autoconf \
+    bison \
+    build-essential \
+    libyaml-dev \
+    libreadline-dev \
+    libncurses5-dev \
+    libffi-dev \
+    libgdbm-dev
 
-rbenv install -l
+rbenv install 3.2.2
+rbenv global 3.2.2
 ```
 
 {% include charts.html %}
