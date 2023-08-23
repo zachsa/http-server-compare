@@ -70,7 +70,9 @@
       ],
     }
   }
-  $.get("/assets/data.json", function (rawData) {
+  
+  fetch("/assets/data.json").then(async res => {
+    const rawData = await res.json()
     var data = splitData(rawData)
     myChart.setOption(
       (option = {
@@ -166,6 +168,7 @@
       }),
       true
     )
+  }
   })
 
   option && myChart.setOption(option)
