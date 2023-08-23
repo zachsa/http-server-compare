@@ -13,3 +13,5 @@
 # Install Node.js via NVM
 # Install
 ```
+
+{% include charts.html %}
