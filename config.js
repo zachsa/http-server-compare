@@ -1,8 +1,8 @@
 export default {
-  BASE_PORT: 12100,
-  TESTS: [1, 4, 16, 200],
-  REPS: 4,
-  WARMUP_DELAY: 1000,
+  BASE_PORT: 19000,
+  TESTS: [4, 8, 16, 32],
+  REPS: 1,
+  WARMUP_DELAY: 2000,
   SERVERS: [
     {
       "#": "Very inefficient and clearly slow. Not worth substantial testing",
@@ -39,9 +39,39 @@ export default {
     {
       type: "python",
       command: "python",
+      args: ["./servers/python/https-async-uvloop.py"],
+      name: "Python HTTPS Async (uvloop) Server",
+      protocol: "https",
+    },
+    {
+      type: "python",
+      command: "python",
       args: ["./servers/python/https-async.py"],
       name: "Python HTTPS Async Server",
       protocol: "https",
+    },
+    {
+      type: "ruby",
+      command: "ruby",
+      args: ["./servers/ruby/http-server.rb"],
+      name: "Ruby HTTP Server",
+      testLimit: 8,
+      protocol: "http",
+    },
+    {
+      type: "ruby",
+      command: "ruby",
+      args: ["./servers/ruby/https-server.rb"],
+      name: "Ruby HTTPS Server",
+      testLimit: 8,
+      protocol: "https",
+    },
+    {
+      type: "ruby",
+      command: "ruby",
+      args: ["./servers/ruby/http-server-async.rb"],
+      name: "Ruby HTTP Async Server",
+      protocol: "http",
     },
     {
       type: "node",

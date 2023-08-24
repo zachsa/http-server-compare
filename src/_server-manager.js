@@ -36,12 +36,12 @@ export async function startServers(SERVERS, BASE_PORT, WARMUP_DELAY) {
     ].map((config, i) => {
       const port = BASE_PORT + i
       longestName = Math.max(longestName, config.name.length)
-      console.info(`Starting ${config.name} on port`, port)
       const ps = startServer(
         config.command,
         [...config.args, port],
         config.name
       )
+      console.info(`Started ${config.name} on port`, port)
       return [
         ps.pid,
         {
@@ -51,6 +51,9 @@ export async function startServers(SERVERS, BASE_PORT, WARMUP_DELAY) {
         },
       ]
     })
+  )
+  console.info(
+    `Waiting ${WARMUP_DELAY / 1000} seconds for servers to settle...`
   )
   await new Promise(res => setTimeout(res, WARMUP_DELAY))
   return servers

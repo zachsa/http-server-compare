@@ -1,10 +1,17 @@
+---
+layout: default
+---
+
 # HTTP(S) server: performance comparison
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+**Contents**
 
-- [HTTP(S) server: performance comparison](#https-server-performance-comparison)
+- [Concepts](#concepts)
+  - [Managing sub-processes](#managing-sub-processes)
+  - [Short-lived HTTP server gotchas](#short-lived-http-server-gotchas)
+- [Setup](#setup)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -38,6 +45,8 @@ sudo apt update \
 
 rbenv install 3.2.2
 rbenv global 3.2.2
+bundle install
+npm start
 ```
 
 {% include charts.html %}

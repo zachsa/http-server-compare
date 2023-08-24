@@ -8,6 +8,8 @@ export default async (N = 1000, port = 3000, protocol = "http") => {
     fetchOptions.agent = new Agent({
       rejectUnauthorized: false,
       keepAlive: true,
+      minVersion: "TLSv1.3",
+      maxVersion: "TLSv1.3",
     })
   }
 

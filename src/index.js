@@ -6,6 +6,7 @@ import {
 import config from "../config.js"
 import doTests from "./_do-tests.js"
 const { BASE_PORT, TESTS, REPS, SERVERS, WARMUP_DELAY } = config
+import { writeFile } from "fs/promises"
 
 let servers = undefined
 
@@ -13,9 +14,14 @@ try {
   servers = await startServers(SERVERS, BASE_PORT, WARMUP_DELAY)
 
   const RESULTS = await doTests(TESTS, REPS, servers, longestName)
-  console.log(JSON.stringify(RESULTS))
+
+  // Write the data
+  await writeFile("assets/results.json", JSON.stringify(RESULTS, null, 2), {
+    encoding: "utf8",
+    mode: 0o777,
+  })
 } catch (error) {
-  console.log("hi", error)
+  console.error("An error occurred! Oh no...", error)
 } finally {
   // Register cleanup handlers
   const cleanup = shutdownServers(servers)

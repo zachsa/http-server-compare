@@ -1,6 +1,10 @@
 {
   "name": "ssl-node-test",
   "type": "module",
+  "scripts": {
+    "test": "node src",
+    "start": "bundle exec jekyll serve --incremental"
+  },
   "dependencies": {
     "node-fetch": "^3.3.2"
   }

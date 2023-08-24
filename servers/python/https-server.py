@@ -33,7 +33,11 @@ class MySimpleHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
 
 # Set up the SSL context using the key and cert files
 context = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
-context.load_cert_chain(certfile='./cert.pem', keyfile='./key.pem')
+context.load_cert_chain(certfile='./ssl/cert.pem', keyfile='./ssl/key.pem')
+
+# Specify to use only TLS 1.3
+context.minimum_version = ssl.TLSVersion.TLSv1_3
+context.maximum_version = ssl.TLSVersion.TLSv1_3
 
 httpd = MyHTTPSServer(('', port), MySimpleHTTPRequestHandler)
 httpd.socket = context.wrap_socket(httpd.socket, server_side=True)

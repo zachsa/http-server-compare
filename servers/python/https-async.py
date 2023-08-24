@@ -15,7 +15,11 @@ signal.signal(signal.SIGTERM, shutdown)
 signal.signal(signal.SIGINT, shutdown)
 
 ssl_context = ssl.create_default_context(ssl.Purpose.CLIENT_AUTH)
-ssl_context.load_cert_chain('cert.pem', 'key.pem')
+ssl_context.load_cert_chain('ssl/cert.pem', 'ssl/key.pem')
+
+# Specify to use only TLS 1.3
+ssl_context.minimum_version = ssl.TLSVersion.TLSv1_3
+ssl_context.maximum_version = ssl.TLSVersion.TLSv1_3
 
 app = web.Application()
 app.router.add_get('/', handle)
