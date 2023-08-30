@@ -8,6 +8,7 @@ layout: default
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 **Contents**
 
+- [HTTP Server performance](#http-server-performance)
 - [Concepts](#concepts)
   - [Managing sub-processes](#managing-sub-processes)
   - [Short-lived HTTP server gotchas](#short-lived-http-server-gotchas)
@@ -15,16 +16,23 @@ layout: default
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
+# HTTP Server performance
+{% include charts.html %}
+
+
 # Concepts
+
+## Managing sub-processes
+
 `SIGINT` - Signal interrupt
 `SIGTERM` - Signal terminate
 
 - What is a signal?
 - Do these have to be handled by parent or child processes?
 
-## Managing sub-processes
-
 ## Short-lived HTTP server gotchas
+
+- port reuse
 
 # Setup
 ```sh
@@ -55,5 +63,3 @@ rbenv global 3.2.2
 bundle install
 npm start
 ```
-
-{% include charts.html %}
