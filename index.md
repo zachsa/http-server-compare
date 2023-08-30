@@ -16,6 +16,12 @@ layout: default
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 # Concepts
+`SIGINT` - Signal interrupt
+`SIGTERM` - Signal terminate
+
+- What is a signal?
+- Do these have to be handled by parent or child processes?
+
 ## Managing sub-processes
 
 ## Short-lived HTTP server gotchas
@@ -23,9 +29,10 @@ layout: default
 # Setup
 ```sh
 # Install Node.js via NVM
-# Install
+# Install Golang
+# Install Python
 
-# Install Jekyll
+# Install Ruby and Jekyll
 sudo apt update \
   && sudo apt install \
     rbenv \

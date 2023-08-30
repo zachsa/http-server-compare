@@ -5,7 +5,7 @@ export let longestName = 0
 // Start server
 function startServer(command, args, name) {
   const child = spawn(command, args, {
-    detached: false, // Don't detach the child process
+    detached: true, // This allows for the case where the child process also spawns child processes/threads
   })
 
   child.stdout.on("data", data => {
@@ -16,9 +16,7 @@ function startServer(command, args, name) {
     console.error(`${name} Error: ${data}`)
   })
 
-  child.on("close", code => {
-    console.info(`${name} process exited with code ${code}`)
-  })
+  child.on("close", code => {})
 
   return child
 }
@@ -29,9 +27,7 @@ export async function startServers(SERVERS, BASE_PORT, WARMUP_DELAY) {
     [
       ...SERVERS.sort(
         (a, b) =>
-          a.protocol.localeCompare(b.protocol) ||
-          a.type.localeCompare(b.type) ||
-          a.name.localeCompare(b.name)
+          a.protocol.localeCompare(b.protocol) || a.name.localeCompare(b.name)
       ),
     ].map((config, i) => {
       const port = BASE_PORT + i
@@ -41,7 +37,7 @@ export async function startServers(SERVERS, BASE_PORT, WARMUP_DELAY) {
         [...config.args, port],
         config.name
       )
-      console.info(`Started ${config.name} on port`, port)
+      console.info(`Started ${config.name} on port`, port, `ps`, ps.pid)
       return [
         ps.pid,
         {
@@ -62,7 +58,6 @@ export async function startServers(SERVERS, BASE_PORT, WARMUP_DELAY) {
 function isProcessRunning(servers, pid) {
   try {
     process.kill(pid, 0)
-    delete servers[pid]
     return true
   } catch (err) {
     return err.code !== "ESRCH"
@@ -71,18 +66,19 @@ function isProcessRunning(servers, pid) {
 
 function shutdownServer(servers, pid) {
   if (isProcessRunning(servers, pid)) {
-    try {
-      process.kill(pid, "SIGTERM")
-    } catch (err) {
-      console.error(`Error stopping child process ${pid}`, err)
-    }
+    const r = process.kill(-pid, "SIGTERM")
+    delete servers[pid]
   }
 }
 
 export function shutdownServers(servers) {
   return function () {
     Object.keys(servers).forEach(pid => {
-      shutdownServer(servers, pid)
+      try {
+        shutdownServer(servers, pid)
+      } catch (e) {
+        console.error(`Error stopping child process ${pid}`, err)
+      }
     })
   }
 }

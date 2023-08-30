@@ -1,20 +1,16 @@
 import fetch from "./_fetch.js"
 
 export default async function (TESTS, REPS, servers, longestName) {
-  const RESULTS = { http: {}, https: {} }
+  const RESULTS = {}
   for (let i = 0; i < REPS; i++) {
     console.info(`\nTest ${i + 1} of ${REPS}`)
 
     for (const N of TESTS) {
       console.info(` ==> C=${String(N).padStart(3, "0")}`)
 
-      for (const {
-        port,
-        protocol,
-        type,
-        name,
-        testLimit = NaN,
-      } of Object.values(servers)) {
+      for (const { port, protocol, name, testLimit = NaN } of Object.values(
+        servers
+      )) {
         if (!isNaN(testLimit) && N > testLimit) continue
 
         const timing = (await fetch(N, port, protocol)).toFixed(3)
@@ -26,12 +22,10 @@ export default async function (TESTS, REPS, servers, longestName) {
             " "
           )} :: ${key} requests :: in ${timing} seconds`
         )
-
-        RESULTS[protocol][type] = RESULTS[protocol][type] || {}
-        RESULTS[protocol][type][key] = [
-          ...(RESULTS[protocol][type][key] || []),
-          timing,
-        ]
+        if (!RESULTS[key]) RESULTS[key] = {}
+        if (!RESULTS[key][protocol]) RESULTS[key][protocol] = {}
+        if (!RESULTS[key][protocol][name]) RESULTS[key][protocol][name] = []
+        RESULTS[key][protocol][name] = [...RESULTS[key][protocol][name], timing]
       }
     }
   }
