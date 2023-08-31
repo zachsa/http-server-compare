@@ -1,7 +1,7 @@
 export default {
   BASE_PORT: 12000,
-  TESTS: [100, 200, 400, 800],
-  REPS: 16,
+  TESTS: [10, 20, 40],
+  REPS: 8,
   WARMUP_DELAY: 3000,
   SERVERS: [
     {

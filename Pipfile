@@ -11,3 +11,6 @@ uvloop = "*"
 
 [requires]
 python_version = "3.11"
+
+[scripts]
+script = "python --version"
