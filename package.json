@@ -4,7 +4,7 @@
   "scripts": {
     "start": "npm test && npm run stats",
     "test": "node server-tests",
-    "stats": "which python ",
+    "stats": "python stats/",
     "ghp": "bundle exec jekyll serve --incremental"
   },
   "dependencies": {
