@@ -24,8 +24,11 @@ export default async function (TESTS, REPS, servers, longestName) {
         )
         if (!RESULTS[key]) RESULTS[key] = {}
         if (!RESULTS[key][protocol]) RESULTS[key][protocol] = {}
-        if (!RESULTS[key][protocol][name]) RESULTS[key][protocol][name] = []
-        RESULTS[key][protocol][name] = [...RESULTS[key][protocol][name], timing]
+        if (!RESULTS[key][protocol][name]) RESULTS[key][protocol][name] = {}
+        RESULTS[key][protocol][name].values = [
+          ...(RESULTS[key][protocol][name].values || []),
+          timing,
+        ]
       }
     }
   }

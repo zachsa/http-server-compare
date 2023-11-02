@@ -3,7 +3,7 @@ import {
   shutdownServers,
   longestName,
 } from "./_server-manager.js"
-import config from "../config.js"
+import config from "../config.json" assert { type: "json" }
 import doTests from "./_do-tests.js"
 const { BASE_PORT, TESTS, REPS, SERVERS, WARMUP_DELAY } = config
 import { writeFile } from "fs/promises"

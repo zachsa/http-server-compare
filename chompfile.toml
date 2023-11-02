@@ -1,0 +1,19 @@
+version = 0.1
+default-task='start'
+
+[[task]]
+name = 'ghp'
+run = 'bundle exec jekyll serve --incremental'
+
+[[task]]
+name = 'start'
+deps=['test', 'stats']
+serial = true
+
+[[task]]
+name = 'test'
+run = 'node server-tests'
+
+[[task]]
+name = 'stats'
+run = 'python stats/'

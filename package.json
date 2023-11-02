@@ -2,10 +2,7 @@
   "name": "ssl-node-test",
   "type": "module",
   "scripts": {
-    "start": "npm test && npm run stats",
-    "test": "node server-tests",
-    "stats": "python stats/",
-    "ghp": "bundle exec jekyll serve --incremental"
+    "start": "echo refer to chompfile.toml for repository scripts (https://github.com/guybedford/chomp)"
   },
   "dependencies": {
     "node-fetch": "^3.3.2"
