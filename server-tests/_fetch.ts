@@ -1,8 +1,9 @@
 import fetch from "node-fetch"
 import { Agent } from "https"
+import {FetchOptions} from './types.ts'
 
 export default async (N = 1000, port = 3000, protocol = "http") => {
-  const fetchOptions = {}
+  const fetchOptions: FetchOptions = {}
 
   if (protocol === "https") {
     fetchOptions.agent = new Agent({

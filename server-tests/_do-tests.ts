@@ -1,6 +1,7 @@
-import fetch from "./_fetch.js"
+import fetch from "./_fetch.ts"
+import { ServerConfig } from "./types.ts"
 
-export default async function (TESTS, REPS, servers, longestName) {
+export default async function (TESTS, REPS, data, longestName) {
   const RESULTS = {}
   for (let i = 0; i < REPS; i++) {
     console.info(`\nTest ${i + 1} of ${REPS}`)
@@ -9,7 +10,7 @@ export default async function (TESTS, REPS, servers, longestName) {
       console.info(` ==> C=${String(N).padStart(3, "0")}`)
 
       for (const { port, protocol, name, testLimit = NaN } of Object.values(
-        servers
+        data as Record<string, ServerConfig>
       )) {
         if (!isNaN(testLimit) && N > testLimit) continue
 
@@ -17,10 +18,7 @@ export default async function (TESTS, REPS, servers, longestName) {
         const key = `c=${String(N).padStart(3, "0")}`
 
         console.info(
-          `${name.padEnd(
-            longestName + 1,
-            " "
-          )} :: ${key} requests :: in ${timing} seconds`
+          `${name.padEnd(longestName + 1, " ")} :: ${key} :: ${timing} seconds`
         )
         if (!RESULTS[key]) RESULTS[key] = {}
         if (!RESULTS[key][protocol]) RESULTS[key][protocol] = {}

@@ -5,6 +5,8 @@
     "start": "echo refer to chompfile.toml for repository scripts (https://github.com/guybedford/chomp)"
   },
   "dependencies": {
-    "node-fetch": "^3.3.2"
+    "node-fetch": "^3.3.2",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.2.2"
   }
 }

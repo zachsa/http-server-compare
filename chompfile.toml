@@ -12,7 +12,7 @@ serial = true
 
 [[task]]
 name = 'test'
-run = 'node server-tests'
+run = 'node --loader ts-node/esm server-tests/index.ts'
 
 [[task]]
 name = 'stats'

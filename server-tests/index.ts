@@ -2,9 +2,9 @@ import {
   startServers,
   shutdownServers,
   longestName,
-} from "./_server-manager.js"
+} from "./_server-manager.ts"
 import config from "../config.json" assert { type: "json" }
-import doTests from "./_do-tests.js"
+import doTests from "./_do-tests.ts"
 const { BASE_PORT, TESTS, REPS, SERVERS, WARMUP_DELAY } = config
 import { writeFile } from "fs/promises"
 

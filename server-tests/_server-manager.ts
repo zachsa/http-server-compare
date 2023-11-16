@@ -77,7 +77,7 @@ export function shutdownServers(servers) {
       try {
         shutdownServer(servers, pid)
       } catch (e) {
-        console.error(`Error stopping child process ${pid}`, err)
+        console.error(`Error stopping child process ${pid}`, e)
       }
     })
   }
