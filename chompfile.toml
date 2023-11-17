@@ -12,7 +12,11 @@ serial = true
 
 [[task]]
 name = 'test'
-run = 'node --loader ts-node/esm server-tests/index.ts'
+run = """
+node \
+  --import=./loaders/register.js \
+  server-tests/index.ts
+"""
 
 [[task]]
 name = 'stats'
